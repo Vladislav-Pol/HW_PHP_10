@@ -6,17 +6,17 @@ $db = Db::getInstance();
 
 $arCategory = $db->getCategories();
 
-$getCaterory = $_GET['category'] ?: '';
+$getCategory = $_GET['category'] ?: '';
 
 $offset = ($_GET['page'] > 1) ? ($_GET['page']- 1) * $db->getPrevLimit() : 0;
-$arPreview = $db->getPreviewData($getCaterory, $offset);
+$arPreview = $db->getPreviewData($getCategory, $offset);
 
-$countPosts = $db->getCountPosts($getCaterory);
+$countPosts = $db->getCountPosts($getCategory);
+
 $prevLimit = $db->getPrevLimit();
 if($countPosts > $prevLimit){
     $countPages = ceil($countPosts[0] / $prevLimit);
     $countPages = $countPages > 1 ? $countPages : 0;
-
 }
 
 if($_GET['article']){
