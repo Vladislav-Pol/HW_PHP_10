@@ -6,5 +6,5 @@ $db = Db::getInstance();
 
 $arCategory = $db->getCategories();
 
-$getCaterory = $_GET['category'] ?: '123';
+$getCaterory = $_GET['category'] ?: '';
 $arPreview = $db->getPreviewData($getCaterory);

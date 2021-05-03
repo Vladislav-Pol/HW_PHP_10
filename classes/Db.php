@@ -4,6 +4,7 @@
 class Db
 {
     private static $instances = [];
+    protected $config;
     protected $mySqlI;
 
     /**
@@ -66,9 +67,9 @@ class Db
         $query = "SELECT title, date, P.code AS post_code, C.code AS cat_code FROM posts P JOIN categories C ON p.category_id = C.id WHERE P.active = 1 ";
         if($categoryCode != ''){
             $categoryCode = $this->mySqlI->real_escape_string($categoryCode);
-            $query .= "AND C.code = $categoryCode ";
+            $query .= "AND C.code = '$categoryCode' ";
         }
-        $query .= "ORDER BY P.date DESC LIMIT 6";
+        $query .= "ORDER BY P.date DESC LIMIT {$this->config['prevLimit']}";
 
         $result = $this->mySqlI->query($query);
         return $result->fetch_all(MYSQLI_ASSOC);
@@ -76,8 +77,8 @@ class Db
 
     protected function __construct()
     {
-        $config = require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
-        $this->mySqlI = new mysqli($config['db']['hostname'], $config['db']['username'], $config['db']['password'], $config['db']['database'], $config['db']['port']);
+        $this->config = require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
+        $this->mySqlI = new mysqli($this->config['db']['hostname'], $this->config['db']['username'], $this->config['db']['password'], $this->config['db']['database'], $this->config['db']['port']);
     }
 
     public function __destruct()

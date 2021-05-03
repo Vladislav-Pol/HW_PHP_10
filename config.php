@@ -8,6 +8,7 @@ $arData = [
         'database' => 'articles',
         'port' => '3306',
     ],
+    'prevLimit' => 6,
 ];
 
 return $arData;
