@@ -1,0 +1,12 @@
+main{
+    max-width: 1400px;
+    width: 95%;
+    margin: 0 auto 0;
+    min-height: calc(100vh - 80px);
+}
+.container-fluid{
+    max-width: 1400px;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}

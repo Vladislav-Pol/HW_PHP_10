@@ -75,6 +75,13 @@ class Db
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getPost($data)
+    {
+        $query = "SELECT * FROM posts JOIN authors ON posts.author_id = authors.id WHERE posts.code = '{$this->mySqlI->real_escape_string($data)}'";
+        $result = $this->mySqlI->query($query);
+        return $result->fetch_all(MYSQLI_ASSOC)[0];
+    }
+
     protected function __construct()
     {
         $this->config = require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
