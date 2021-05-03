@@ -1,4 +1,5 @@
 <?php
+$title = 'Статьи';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/articles/controller.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/templates/header.php';
 ?>
@@ -13,6 +14,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/templates/header.php';
                     <a href="/articles/<?= $preview['cat_code'] . '/' . $preview['post_code'] ?>"><?= $preview['title'] ?></a> <?= $preview['date'] ?>
                 </p>
             <? endforeach; ?>
+            <? for ($i = 1; $i <= $countPages; $i++):?>
+                <a href="/articles/?page=<?=$i?>"><?=$i?></a>
+            <? endfor;?>
         </div>
     </div>
 </main>

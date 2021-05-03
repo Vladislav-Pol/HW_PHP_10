@@ -2,17 +2,8 @@ RewriteEngine on
 
 RewriteBase /
 
-RewriteCond %{REQUEST_URI} ^(/articles(/(index.php(/)?)?)?)$
-RewriteRule ^(articles)  $1/index.php [L]
-
-RewriteCond %{REQUEST_URI} ^/articles/[^\/]+(/(index.php(/)?)?)?$
-RewriteCond %{REQUEST_URI} !^/articles/section.php$
-RewriteCond %{REQUEST_URI} !^/articles/detail.php$
-RewriteRule ^(articles)/([^\/]+) $1/section.php?category=$2 [L]
-
-RewriteCond %{REQUEST_URI} ^/articles/[^\/]+/[^\/]+(/(index.php(/)?)?)?$
-RewriteCond %{REQUEST_URI} !^/articles/detail.php$
-RewriteRule ^(articles/)([^\/]+)/([^\/]+) $1detail.php?category=$2&article=$3 [L]
-
-RewriteCond %{REQUEST_URI} !^(/(index.php(\/)?)?)$|^(/contacts.*)$|^(/articles.*)$|^(/css/.*)$|^(/js/.*)$
+RewriteCond %{REQUEST_URI} !^(/(index.php(\/)?)?)$
+RewriteCond %{REQUEST_URI} !^(/contacts.*)$
+RewriteCond %{REQUEST_URI} !^(/css/.*)$
+RewriteCond %{REQUEST_URI} !^(/js/.*)$
 RewriteRule ^ 404.php
