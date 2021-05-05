@@ -10,6 +10,7 @@ $db = Db_PDO_posts::getInstance(); //для работы с MySQL через о�
 
 $arCategory = $db->getCategories();
 
+$pageN = $_GET['page'] ?: 1;
 $getCategory = $_GET['category'] ?: '';
 
 if($_GET['category']){
@@ -26,7 +27,7 @@ if($_GET['category']){
     }
 }
 
-$offset = ($_GET['page'] > 1) ? ($_GET['page']- 1) * $db->getPrevLimit() : 0;
+$offset = ($pageN > 1) ? ($pageN- 1) * $db->getPrevLimit() : 0;
 $arPreview = $db->getPreviewData($getCategory, $offset);
 
 $countPosts = $db->getCountPosts($getCategory);
