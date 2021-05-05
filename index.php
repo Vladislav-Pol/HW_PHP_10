@@ -3,7 +3,7 @@ $title = 'Главная';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/templates/header.php';
 ?>
 <main>
-<?= phpinfo()?>
+<h1>Это главная страница</h1>
 </main>
 
 <?php
