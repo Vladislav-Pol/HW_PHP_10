@@ -57,7 +57,7 @@ abstract class Db
 
     protected function __construct()
     {
-        $this->config = require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
+        $this->config = require $_SERVER['DOCUMENT_ROOT'] . '/config.php';
         $this->mySqlI = new mysqli($this->config['db']['hostname'], $this->config['db']['username'], $this->config['db']['password'], $this->config['db']['database'], $this->config['db']['port']);
     }
 
@@ -85,3 +85,4 @@ abstract class Db
         return self::$instances[$subclass];
     }
 }
+

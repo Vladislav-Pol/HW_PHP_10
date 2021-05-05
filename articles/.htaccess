@@ -13,3 +13,9 @@ RewriteRule ^([^\/]+)$ section.php?category=$1 [QSA,L]
 RewriteCond %{REQUEST_URI} ^/articles/[^\/]+/[^\/]+(/)?$
 RewriteCond %{REQUEST_URI} !^/articles/detail.php$
 RewriteRule ^([^\/]+)/([^\/]+)$ detail.php?category=$1&article=$2 [QSA,L]
+
+
+RewriteCond %{REQUEST_URI} !^/articles/index.php$
+RewriteCond %{REQUEST_URI} !^/articles/section.php$
+RewriteCond %{REQUEST_URI} !^/articles/detail.php$
+RewriteRule ^ ../404.php

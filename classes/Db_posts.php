@@ -34,7 +34,7 @@ class Db_posts extends Db
         }
 
         $result = $this->mySqlI->query($query);
-        return $result->fetch_all()[0];
+        return $result->fetch_all()[0][0];
     }
 
     public function getPrevLimit()
