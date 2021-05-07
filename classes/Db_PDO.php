@@ -29,10 +29,11 @@ abstract class Db_PDO
         if ($arSelect === []) {
             $query .= "* ";
         } else {
+            $pref = "";
             foreach ($arSelect as $item) {
-                $query .= $item . ", ";
+                $query .= $pref . $item;
+                $pref = ", ";
             }
-            $query = preg_replace('/, $/', '', $query);
         }
 
         $query .= " FROM " . $table;
